@@ -1,0 +1,176 @@
+body {
+	background-image: url(../../../static/img/background.png);
+	font-family: Arial, sans-serif;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+/*
+header {
+	background: rgb(255, 255, 255, 0.0);
+	padding: 20px;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+/*
+header h1 {
+	font-size: 24px;
+}
+*/
+
+h1 {
+	font-size: 35px;
+	text-align: center;
+}
+
+#logo_img {
+	width: 70px;
+	height: 70px;
+}
+
+#logo_text {
+	color: white;
+	float: left;
+}
+
+#logo_text_ch {
+	font-size: 30px;
+}
+
+#logo_text_en {
+	font-size: 20px;
+	text-align: left;
+}
+
+#logo {
+	display: flex;
+}
+
+.header_buttons img {
+	width: 60px;
+	height: 60px;
+}
+
+header {
+	background: rgb(255, 255, 255, 0);
+	padding: 10px;
+	color: #fff;
+	text-align: center;
+	display: flex;
+}
+
+
+.header_buttons span {
+	margin: 0 10px;
+}
+
+.header_buttons {
+	padding-left: 480px;
+	padding-right: 30px;
+}
+
+
+nav {
+	background: rgba(255, 255, 255, 0.5);
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+	margin-left: 30px;
+	margin-right: 30px;
+	color: #000;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+nav a:hover {
+	color: blue;
+}
+
+section {
+	height: 800px;
+}
+
+.main-content {
+	background: rgba(255, 255, 255, 0.6);
+	margin: 20px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 0px;
+	min-height: 10px;
+	/* 根据需要调整 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 1380px;
+}
+
+#content {
+	height: 2300px;
+}
+
+.sidebar {
+	background: rgba(255, 255, 255, 0.5);
+	padding: 20px;
+	margin: 20px;
+	border-radius: 10px;
+	width: 250px;
+	/* 根据需要调整 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+	margin-top: 5px;
+	font-size: 40px;
+	color: #000;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.sidebar a {
+	display: block;
+	color: #000;
+	text-decoration: none;
+	margin-bottom: 5px;
+	font-size: 25px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.sidebar a:hover {
+	color: red;
+	font-weight: 700;
+}
+
+#focus {
+	background-color: mediumturquoise;
+}
+
+footer {
+	margin-top: 1680px;
+	background-color: rgb(100, 150, 255, 0.3);
+	color: white;
+	text-align: center;
+	padding: 10px;
+	height: 200px;
+}
+
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+	.top-nav a {
+		font-size: 16px;
+	}
+
+	header h1 {
+		font-size: 20px;
+	}
+}

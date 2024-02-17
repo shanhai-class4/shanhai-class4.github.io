@@ -1,0 +1,212 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	background-image: url(../img/background.png);
+}
+
+#logo_img {
+	width: 70px;
+	height: 70px;
+}
+
+#logo_text {
+	color: white;
+	float: left;
+}
+
+#logo_text_ch {
+	font-size: 30px;
+}
+
+#logo_text_en {
+	font-size: 20px;
+	text-align: left;
+}
+
+#logo {
+	display: flex;
+}
+
+.header_buttons img {
+	width: 60px;
+	height: 60px;
+}
+
+header {
+	background: rgb(255, 255, 255, 0);
+	padding: 10px;
+	color: #fff;
+	text-align: center;
+	display: flex;
+}
+
+
+.header_buttons span {
+	margin: 0 10px;
+}
+
+.header_buttons {
+	padding-left: 480px;
+	padding-right: 30px;
+}
+
+/*
+header .header-content {
+  background: linear-gradient(180deg, #B3D4FC, #E6F7FF);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+*/
+/*
+nav {
+	background: rgba(255, 255, 255, 0.5);
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  margin: 0;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+*/
+nav {
+	background: rgba(255, 255, 255, 0.5);
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+	margin-left: 30px;
+	margin-right: 30px;
+	color: #000;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+nav a:hover {
+	color: blue;
+}
+
+#resource_search {
+	width: 1200px;
+	height: 30px;
+	font-size: 20px;
+}
+
+#resource_submit {
+	width: 160px;
+	font-size: 20px;
+	color: white;
+	background-color: darkturquoise;
+	border-radius: 5px;
+	border-color: rgb(255, 255, 255, 0);
+}
+
+#resource_submit:hover {
+	background-color: mediumaquamarine;
+}
+
+#resource_submit:active {
+	background-color: rgb(173, 192, 232);
+	color: white;
+	border-color: rgb(0, 0, 0);
+}
+
+.resource-search {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	background-color: #fff;
+	margin: 20px;
+	border-radius: 10px;
+}
+
+.resource-content {
+	background-color: rgb(255, 255, 255, 0.6);
+	margin: 20px;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.resource-options span {
+	margin-right: 10px;
+}
+
+.post-content p,
+.post-example p {
+	margin-bottom: 10px;
+}
+
+#check_box {
+	display: flex;
+}
+
+#sort_way {
+	display: flex;
+}
+
+#check_box span {
+	font-size: 20px;
+}
+
+#sort_way {
+	margin-top: 8px;
+	font-size: 20px;
+}
+
+.resource h1 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#info {
+	display: flex;
+}
+
+#info p {
+	margin-right: 30px;
+}
+
+.resource {
+	background-color: rgb(255, 255, 255, 0.6);
+	margin: 20px;
+	padding: 20px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+footer a {
+	color: white;
+	text-decoration: none;
+}
+
+footer {
+	margin-top: 20px;
+	background-color: rgb(100, 150, 255, 0.3);
+	color: white;
+	text-align: center;
+	padding: 10px;
+	height: 200px;
+}
+
+/* 添加更多样式以匹配具体设计 */
+@media (max-width: 768px) {
+	#logo_text {
+		display: none;
+		/* 在较小的屏幕上不显示logo文字 */
+	}
+}
