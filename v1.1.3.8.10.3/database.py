@@ -1,0 +1,271 @@
+import sqlite3
+from utils import *
+
+
+# 父讨论为father的所有讨论
+# 自动排序
+def discuss_all_t(father = None):
+    c = get_cursor()
+    c[1].execute("SELECT * FROM discuss;")
+    d = c[1].fetchall()
+    c[0].commit()
+    c[0].close()
+    topd = []
+    pd = []
+    for i in d:
+        if i[1] == father:
+            if i[7]:
+                topd.append(i)
+            else:
+                pd.append(i)
+    pd = sorted(pd, key = lambda s: s[4])
+    topd.extend(pd)
+    return topd
+
+# 转换为id
+def toid(d):
+    ids = []
+    for i in d:
+        ids.append(i[0])
+    return ids
+
+# 父讨论为father的所有讨论id
+# 自动排序
+def discuss_all(father = None):
+    return toid(discuss_all_t(father))
+
+def discuss_t(user_id, father = None):
+    d = discuss_all_t(father)
+    nd = []
+    for i in d:
+        if str(user_id) in i[6].split(','): # user_id可见
+            nd.append(i)
+    return nd
+
+# 父讨论为father的user_id可见讨论id
+# 自动排序
+def discuss(user_id, father = None):
+    d = discuss_all_t(father)
+    nd = []
+    for i in d:
+        if str(user_id) in i[6].split(','): # user_id可见
+            nd.append(i)
+    return toid(nd)
+
+# 发布者为pub_id（Ta的讨论），且父讨论为None的user_id可见讨论id
+# 自动排序
+def discuss_f(user_id, pub_id):
+    d = discuss_all_t(None)
+    nd = []
+    for i in d:
+        if i[5] == pub_id and str(user_id) in i[6].split(','): # pub_id发出且user_id可见
+            nd.append(i)
+    return toid(nd)
+
+# 自动打开news_id新闻id文件，并返回新闻id
+# 不排序
+def news_discuss():
+    f = open("./news_id.txt", 'r', encoding = 'utf-8')
+    data = f.readlines()
+    f.close()
+    news_id = []
+    for d in data:
+        news_id.append(int(d))
+    return news_id
+
+
+class Discuss:
+    def __init__(self, id):
+        c = get_cursor()
+        c[1].execute(f"SELECT * FROM discuss WHERE id = '{id}'")
+        dis = c[1].fetchone()
+        self.info = dis;
+        self.id = dis[0]
+        if dis[9] == None:
+            self.fname = None
+            if dis[2] == None:
+                self.type = 1
+                self.type_sh = "短评"
+            else:
+                self.type = 0
+                self.type_sh = "文章"
+        else:
+            self.type = 2
+            self.type_sh = "文件"
+            self.fname = dis[9]
+        self.url = f"/discuss/{dis[0]}"
+        self.turl = f"./discuss/{dis[0]}.txt"
+        self.father = dis[1]
+        if self.father == None:
+            self.father = 0
+        self.title = dis[2]
+        self.subject = dis[3]
+        self.pub_time = dis[4]
+        self.pub_id = dis[5]
+        c[1].execute(f"SELECT * FROM users WHERE id = '{self.pub_id}'")
+        dat = c[1].fetchone()
+        self.pub_name = dat[1]
+        self.pub_pic = dat[8]
+        self.csee = dis[6]
+        self.csee_cnt = -1
+        if self.csee != "all":
+            self.csee_cnt = len(self.csee.split(','))
+        self.top = dis[7]
+        self.temp = dis[8]
+        f = open(self.turl, 'r', encoding = 'utf-8')
+        self.all_data = f.read()
+        f.close()
+        self.main_data = b_render(self.all_data)[0:50]
+        self.main_data += "..."
+        if self.title != None:
+            self.title_sh = self.title
+        else:
+            self.title_sh = "[短评]" + b_render(self.all_data)
+        if len(self.title_sh) >= 16:
+            self.title_sh = self.title_sh[0:16] + "..."
+        self.desc = dis[10]
+        c[0].commit()
+        c[0].close()
+    
+    def cos(self):
+        c = get_cursor()
+        c[1].execute(f"SELECT * FROM users WHERE id = '{self.pubid}'")
+        dat = c[1].fetchone()
+        self.pub_name = dat[1]
+        self.pub_pic = dat[8]
+        self.csee_cnt = -1
+        if self.csee != "all":
+            self.csee_cnt = len(self.csee.split(','))
+        if self.title != None:
+            self.title_sh = self.title
+        else:
+            self.title_sh = "[短评]" + b_render(self.all_data)
+        if len(self.title_sh) >= 16:
+            self.title_sh = self.title_sh[0:16] + "..."
+        self.main_data = b_render(self.all_data)[0:50]
+        self.main_data += "..."
+        if self.type == 0:
+            if self.title == None:
+                self.title = "[无标题]"
+            if self.fname != None:
+                self.fname = None
+        elif self.type == 1:
+            if self.title != None:
+                self.title = None
+            if self.fname != None:
+                self.fname = None
+        else:
+            if self.title == None:
+                self.title = "[无标题]"
+            if self.fname == None:
+                self.fname = "未知.txt"
+        c[0].commit()
+        c[0].close()
+    
+    def save(self, id):
+        if id == None:
+            id = self.id
+        self.cos()
+        c = get_cursor()
+        c[1].execute(f"UPDATE discuss SET father = {self.father}, title = {self.title}, subject = {self.subject}, date = {self.pub_time}, pub = {self.pub_id}, csee = {self.csee}, top = {self.top}, temp = {self.temp}, fname = {self.fname}, desc = {self.desc} WHERE id = {id}")
+        c[0].commit()
+        c[0].close()
+    
+    def insert(self):
+        self.cos()
+        c = get_cursor()
+        c[1].execute(f"INSERT INTO discuss (father, title, subject, date, pub, csee, top, temp, fname, desc) VALUES ({self.father}, {self.title}, {self.subject}, {self.pub_time}, {self.pub_id}, {self.csee}, {self.top}, {self.temp}, {self.fname}, {self.desc})")
+        nowid = c[1].lastrowid
+        c[0].commit()
+        c[0].close()
+        return nowid
+    
+    def insert_tr(self):
+        self.cos()
+        c = get_cursor()
+        c[1].execute(f"INSERT INTO resource (father, title, subject, date, pub, csee, top, temp, fname, desc) VALUES ({self.father}, {self.title}, {self.subject}, {self.pub_time}, {self.pub_id}, {self.csee}, {self.top}, {self.temp}, {self.fname}, {self.desc})")
+        nowid = c[1].lastrowid
+        c[0].commit()
+        c[0].close()
+        return nowid
+        
+'''
+            
+id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+father INT,
+title TEXT,
+subject TEXT,   
+date TEXT NOT NULL,   
+pub INT NOT NULL,  
+csee TEXT NOT NULL,
+top INT NOT NULL,
+temp INT NOT NULL, 
+fname TEXT, 
+desc TEXT
+'''
+
+class User:
+    def __init__(self, id):
+        c = get_cursor()
+        c[1].execute(f"SELECT * FROM user WHERE id = '{id}'")
+        dis = c[1].fetchone()
+        self.info = dis;
+        self.id = dis[0]
+        if dis[9] == None:
+            self.fname = None
+            if dis[2] == None:
+                self.type = 1
+                self.type_sh = "短评"
+            else:
+                self.type = 0
+                self.type_sh = "文章"
+        else:
+            self.type = 2
+            self.type_sh = "文件"
+            self.fname = dis[9]
+        self.url = f"/discuss/{dis[0]}"
+        self.turl = f"./discuss/{dis[0]}.txt"
+        self.father = dis[1]
+        if self.father == None:
+            self.father = 0
+        self.title = dis[2]
+        self.subject = dis[3]
+        self.pub_time = dis[4]
+        self.pub_id = dis[5]
+        c[1].execute(f"SELECT * FROM users WHERE id = '{self.pub_id}'")
+        dat = c[1].fetchone()
+        self.pub_name = dat[1]
+        self.pub_pic = dat[8]
+        self.csee = dis[6]
+        self.csee_cnt = -1
+        if self.csee != "all":
+            self.csee_cnt = len(self.csee.split(','))
+        self.top = dis[7]
+        self.temp = dis[8]
+        f = open(self.turl, 'r', encoding = 'utf-8')
+        self.all_data = f.read()
+        f.close()
+        self.main_data = b_render(self.all_data)[0:50]
+        self.main_data += "..."
+        if self.title != None:
+            self.title_sh = self.title
+        else:
+            self.title_sh = "[短评]" + b_render(self.all_data)
+        if len(self.title_sh) >= 16:
+            self.title_sh = self.title_sh[0:16] + "..."
+        self.desc = dis[10]
+        c[0].commit()
+        c[0].close()
+
+'''
+id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,  0
+username TEXT NOT NULL,                         1
+password TEXT NOT NULL,                         2
+name TEXT NOT NULL,                             3
+level INT NOT NULL,                             4
+score INT NOT NULL,                             5
+active INT NOT NULL,                            6
+admin INT NOT NULL,                             7
+picpath TEXT NOT NULL,                          8
+desc TEXT                                       9
+'''
