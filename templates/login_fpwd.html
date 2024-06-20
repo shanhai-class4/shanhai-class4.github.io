@@ -1,0 +1,127 @@
+<!--  -->
+<!DOCTYPE html>
+<html lang = "zh">
+	<head>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+		
+		<title>班级圈计划 - ClassNet</title>
+		
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+<link rel="stylesheet" href="../../static/bootstrap-4.6.2/css/bootstrap.min.css">
+		
+		<link rel="stylesheet" href="../../static/css/std.css">
+		<style>
+			
+		</style>
+		
+	</head>
+
+	<body>
+	<!-- 顶部信息 -->
+		<header>
+			<a href="/" id = "head_logo_text">
+				<div>
+					<img src="../../static/img/logo.png" alt="logo" id = "logo_img" />
+				</div>
+				<div>
+					<div id = "logo_text_h">
+						&nbsp; 人大附通·北京学校 2023级四班 班级圈
+					</div>
+					<div id = "logo_text_l">
+						&nbsp;&nbsp; Grade 2023 Class 4 - Class Net
+					</div>
+				</div>
+			</a>
+			{% if session['login'] %}
+			<div id = "header_buttons">
+				<a href="/discuss/new/" target="_blank">
+					<img src="../../static/img/new_ico.png" alt="新建" class = "header_button_img" />
+				</a>
+				<a href="/discuss/list/" target="_blank">
+					<img src="../../static/img/search_ico.png" alt="搜索" class = "header_button_img" />
+				</a>
+				<a href="/user/me/" target="_blank">
+					<img src="../../tatic/img/person_ico.png" alt="个人" class = "header_button_img" />
+				</a>
+				{% if session['admin'] %}
+				<a href="/setting/" target="_blank">
+					<img src="../../static/img/setting_ico.png" alt="设置" class = "header_button_img" />
+				</a>
+				{% endif %}
+			</div>
+			{% else %}
+			<p id = "header_buttons"><h3><a href = "/login/">登录</a></h3></p>
+			{% endif %}
+		</header>
+		<nav id = "navbar" class = "nav nav-pills nav-justified">
+			<div class = "nav-link">
+				<a class = "nav_link" href="/information/" target="_blank">
+					<div class = "nav_text">班级信息</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/resource/" target="_blank">
+					<div class = "nav_text">班级资源</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/forum/" target="_blank">
+					<div class = "nav_text">班级论坛</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/activity/" target="_blank">
+					<div class = "nav_text">班级活动</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/album/" target="_blank">
+					<div class = "nav_text">班级相册</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/about/" target="_blank">
+					<div class = "nav_text">帮助中心</div>
+				</a>
+			</div>
+		</nav>
+		<section>
+		<div class="main-content">
+            <!-- 如果您忘记了您的密码，请将您的<b>用户ID</b>、<b>真实姓名</b>、<b>教育ID</b>、<b>新密码</b>、填写在下方输入框中。通过审核后，管理员将在7个工作日内将您的密码设置为新密码
+            <br>
+            （注：填写教育ID的目的是便于确认您的身份，对于您的个人信息我们将高度保密）
+            <hr>
+		    <form method="POST" action="./handle/">
+            	用户ID：<input type="text" name="id"><br>
+            	真实姓名：<input type="text" name="rname"><br>
+                教育ID：<input type="text" name="eduid"><br>
+                新密码：<input type="password" name="pwd"><br>
+                <button>提 交</button> -->
+				<br>
+				<h3>如果您忘记了您的密码，请将您的想要修改成的<b>新密码</b>在学校线下填表递交管理员。通过审核后，管理员将在7个工作日内将您的密码设置为新密码。</h3><br><h4>（注：电子“忘记密码”功能正在开发中，给您带来的不便敬请谅解）</h4><br>
+            </form>
+        </div>
+		
+		
+		</section>
+		<footer>
+			<div>
+				<p class="footer_data"><b>©人大附通·北京学校 初一4班 班级网站</b></p>
+				<p class="footer_data"><b>制作团队：</b>4班班级圈网站站站站站开发组</p>
+				<p class="footer_data"><b>网站主要设计者：</b>贠涵，闫嘉桐，王岩杉，袁立之，董雨宸，尹怀杰</p>
+				<p class="footer_data"><b>内容责任编辑：</b>贠涵，闫嘉桐</p>
+				<p class="footer_data"><a href = "#">查看更多</a></p>
+			</div>
+		</footer>
+		
+
+<!-- Bookstrap -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="../../static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
+
+		<script src = "../../static/js/refresh_color.js"></script>
+		<script src = "../../static/js/checker.js"></script>
+	</body>
+</html>

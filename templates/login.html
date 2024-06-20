@@ -1,0 +1,77 @@
+<!-- /login/ -->
+<!DOCTYPE html>
+<html lang = "zh">
+	<head>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+		
+		<title>班级圈计划 - ClassNet - 登录</title>
+		
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+<link rel="stylesheet" href="../static/bootstrap-4.6.2/css/bootstrap.min.css">
+		
+		<link rel="stylesheet" href="../static/css/std.css">
+		<style>
+			.out
+			{
+				display: flex;
+				flex-direction: column;
+			}
+			strong
+            {
+                align-self: center;
+            }
+		</style>
+		
+	</head>
+
+	<body>
+	<!-- 顶部信息 -->
+		<header>
+			<a href="/" id = "head_logo_text">
+				<div>
+					<img src="../static/img/logo.png" alt="logo" id = "logo_img" />
+				</div>
+				<div>
+					<div id = "logo_text_h">
+						&nbsp; 人大附通·北京学校 2023级四班 班级圈
+					</div>
+					<div id = "logo_text_l">
+						&nbsp;&nbsp; Grade 2023 Class 4 - Class Net
+					</div>
+				</div>
+			</a>
+		</header>
+		
+		<section>
+		
+		<div class = "row pack rdiv out main-content">
+			<h2 style = "text-align: center;"><strong> 登录 </strong></h2> <br />
+			<form action = "/login/handle/" method = "post">
+                    <div class = "out">
+                        <strong>用户名：<input type = "text" name = "username"></strong> <br>
+                        <strong>密码：<input type = "password" name = "password"></strong> <br>
+						<a href="/login/forgetpwd" style="text-align: center;">忘记密码</a><br>
+                        <strong><input type = "submit"></strong><br>
+                    </div>
+            </form>
+            {% for err in errors %}
+                <div class = "out">
+                    <strong style = "color: red;"> {{ err }} </strong>
+                </div>
+             {% endfor %}
+		</div>
+		
+		</section>
+		
+
+<!-- Bookstrap -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="../static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
+
+		<script src = "../static/js/refresh_color.js"></script>
+		<script src = "../static/js/refresh_word.js"></script>
+		<script src = "../static/js/checker.js"></script>
+	</body>
+</html>

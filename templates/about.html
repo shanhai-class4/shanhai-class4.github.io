@@ -1,0 +1,237 @@
+<!--  -->
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>班级圈计划 - ClassNet</title>
+
+	<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="../static/bootstrap-4.6.2/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="../static/css/std.css">
+	<style>
+		article {
+			padding-left: 50px;
+			padding-right: 45px;
+			padding-top: 30px;
+			padding-bottom: 25px;
+
+			>* {
+				margin: 15px;
+			}
+
+			h1,
+			h2,
+			h3 {
+				zoom: 0.8;
+			}
+		}
+
+		.card {
+			margin: 10px;
+			background-color: rgb(255, 255, 255, 0.5);
+			border-radius: 10px;
+			border: 2px solid #888;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		}
+
+		#file {
+			height: 305px;
+			width: 1380px;
+		}
+
+		#file img {
+			margin-top: 10px;
+			margin-left: 10px;
+			height: 35px;
+		}
+
+		h1 {
+			margin: 5px;
+			display: block;
+		}
+
+		.update {
+			padding: 15px;
+			width: 98%;
+		}
+
+		textarea {
+			font-size: 20px;
+			display: block;
+			margin: 10px;
+			width: 1380px;
+			height: 400px;
+			resize: none;
+		}
+
+		form span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#submit {
+			width: 200px;
+			height: 50px;
+			font-size: 25px;
+			color: white;
+			background-color: rgb(48, 192, 180);
+			border-radius: 5px;
+			border-color: rgb(255, 255, 255, 0);
+		}
+
+		#submit:hover {
+			background-color: mediumaquamarine;
+		}
+
+		#submit:active {
+			background-color: rgb(173, 192, 232);
+			color: white;
+			border-color: rgb(0, 0, 0);
+		}
+
+
+
+
+		hr {
+			margin-bottom: 0px;
+		}
+
+		#file span {
+			position: relative;
+			color: rgb(127, 127, 127);
+			font-size: 25px;
+			top: -6.5px;
+			left: 2px;
+		}
+
+		.main-content {
+			background: rgba(255, 255, 255, 0.5);
+			margin: 20px;
+			padding: 5px;
+			/* 根据需要调整 */
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		@media (max-width: 768px) {
+
+			/* 手机 */
+			.nav_text {
+				position: relative;
+				left: 0px;
+				display: flex;
+				font-size: 12px;
+			}
+		}
+
+		a {
+			color: white;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 顶部信息 -->
+
+	<nav id="navbar" class="nav nav-pills nav-justified"
+		style="padding: 7px; background-color: rgba(48, 192, 180, 0.5); box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);">
+		<div class="nav-link">
+			<a class="nav_link" href="/about/" target="_blank">
+				<div class="nav_text"><b>帮助中心</b></div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="/" target="_blank">
+				<div class="nav_text">返回主站</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="./course/" target="_blank">
+				<div class="nav_text">使用教程</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="./manage/" target="_blank">
+				<div class="nav_text">管理事项</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="./ula/" target="_blank">
+				<div class="nav_text">用户协议</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="./feedback/" target="_blank">
+				<div class="nav_text">联系我们</div>
+			</a>
+		</div>
+	</nav>
+	<section>
+		<article>
+			<h1>关于我们</h1>
+			<p>“班级圈”网站，为北京学校·人大附中通州校区2023级4班的班级网站，运营期限（一期）2024-2027年，为所有班级成员及教师提供学习、记录的交流平台。本网站的设立宗旨为“记录美好青春”
+			</p>
+			<h2 id="主要功能">主要功能</h2>
+			<p>学习交流知识，公示班级事项，记录美好时刻，存储学习资源</p>
+			<h2 id="技术栈">技术栈</h2>
+			<p>班级圈目前运行在github托管云上，后端系统以python-flask为核心驱动，其中间件涉及Python和Javascript。前端以HTML+CSS为基础，使用jinjia2框架搭建。</p>
+			<p>github仓库链接：<a>ahfdkalk</a></p>
+			<!-- <h2 class="anchor anchorWithStickyNavbar_CuU3" id="成员架构">成员架构</h2>
+				<ul class="">
+					<li>创始人：kkksc03、lzn（前任站长）、lin_toto（首席技术官）</li>
+					<li>开发组：负责新功能开发与功能维护等</li>
+					<li>学术组：负责教材编写、题库管理、课程编排等</li>
+					<li>运营组：负责活动运营、宣传推广、日常运行等</li>
+				</ul> -->
+			<h2 id="更新日志">更新日志</h2>
+			<p>
+			<div class="card update 1-0-1">
+				<h1 style="display: inline">v-1.0.1</h1>
+				<p>· 增加了未知bug</p>
+			</div>
+			<div class="card update 1-0-2">
+				<h1 style="display: inline">v-1.0.0</h1>
+				<p>· 网站发布</p>
+			</div>
+			<div class="card update 1-0-2">
+				<h1 style="display: inline">v1.1.3.8.11.4.2-hotfix4</h1>
+				<p>· 当前版本</p>
+				<p>· 数据库转型第三个版本更新了四项内容后经历15次bugfix的版本</p>
+			</div>
+			</p>
+		</article>
+
+		<!-- <div class="main-content">
+			<h1>意见反馈</h1>
+			<form>
+				<b>联系方式：</b><br>邮箱1（尹怀杰）：2247286854@qq.com<br>邮箱2（董雨宸）：dyc05291025@163.com<br>
+				<hr>
+				邮箱选择:<br>
+					·<a href="https://mail.163.com/js6/main.jsp?sid=dLFDBoJFjUyCIXbGGmFFgcfHbMiewVcw&df=mail163_letter#module=compose.ComposeModule%7C%7B%22type%22%3A%22compose%22%2C%22fullScreen%22%3Atrue%2C%22cid%22%3A%22c%3A1713104819474%22%7D">网易163邮箱</a>
+				<br>
+					·<a href="https://mail.126.com">网易126邮箱</a>
+				<br>
+					·<a href="https://mail.qq.com">QQ邮箱</a>
+				<!--<span><button id="submit">提 交</button></span>-->
+	</section>
+
+
+	<!-- Bookstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+	</script>
+	<script src="../static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
+
+	<script src="../static/js/checker.js"></script>
+</body>
+
+</html>

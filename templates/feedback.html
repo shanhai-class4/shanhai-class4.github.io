@@ -1,0 +1,216 @@
+<!-- /about/feedback/ -->
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>班级圈计划 - ClassNet</title>
+
+	<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="../../static/bootstrap-4.6.2/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="../../static/css/std.css">
+	<style>
+		article {
+			padding-left: 50px;
+			padding-right: 45px;
+			padding-top: 30px;
+			padding-bottom: 25px;
+
+			>* {
+				margin: 15px;
+			}
+
+			h1,
+			h2,
+			h3 {
+				zoom: 0.8;
+			}
+		}
+
+		.card {
+			margin: 10px;
+			background-color: rgb(255, 255, 255, 0.5);
+			border-radius: 10px;
+			border: 2px solid #888;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		}
+
+		#file {
+			height: 305px;
+			width: 1380px;
+		}
+
+		#file img {
+			margin-top: 10px;
+			margin-left: 10px;
+			height: 35px;
+		}
+
+		h1 {
+			margin: 5px;
+			display: block;
+		}
+
+		.update {
+			padding: 15px;
+			width: 98%;
+		}
+
+		textarea {
+			font-size: 20px;
+			display: block;
+			margin: 10px;
+			width: 1380px;
+			height: 400px;
+			resize: none;
+		}
+
+		form span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#submit {
+			width: 200px;
+			height: 50px;
+			font-size: 25px;
+			color: white;
+			background-color: rgb(48, 192, 180);
+			border-radius: 5px;
+			border-color: rgb(255, 255, 255, 0);
+		}
+
+		#submit:hover {
+			background-color: mediumaquamarine;
+		}
+
+		#submit:active {
+			background-color: rgb(173, 192, 232);
+			color: white;
+			border-color: rgb(0, 0, 0);
+		}
+
+
+
+
+		hr {
+			margin-bottom: 0px;
+		}
+
+		#file span {
+			position: relative;
+			color: rgb(127, 127, 127);
+			font-size: 25px;
+			top: -6.5px;
+			left: 2px;
+		}
+
+		.main-content {
+			background: rgba(255, 255, 255, 0.5);
+			margin: 20px;
+			padding: 5px;
+			/* 根据需要调整 */
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		@media (max-width: 768px) {
+
+			/* 手机 */
+			.nav_text {
+				position: relative;
+				left: 0px;
+				display: flex;
+				font-size: 12px;
+			}
+		}
+
+		a {
+			color: white;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 顶部信息 -->
+
+	<nav id="navbar" class="nav nav-pills nav-justified"
+		style="padding: 7px; background-color: rgba(48, 192, 180, 0.5); box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);">
+		<div class="nav-link">
+			<a class="nav_link" href="../" target="_blank">
+				<div class="nav_text"><b>班级圈帮助中心</b></div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="/" target="_blank">
+				<div class="nav_text">返回主站</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="../course/" target="_blank">
+				<div class="nav_text">使用教程</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="../manage/" target="_blank">
+				<div class="nav_text">管理事项</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="../ula/" target="_blank">
+				<div class="nav_text">用户协议</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="../feedback/" target="_blank">
+				<div class="nav_text">联系我们</div>
+			</a>
+		</div>
+	</nav>
+	<section>
+		<article>
+			<h1>联系我们</h1>
+			<p>如果您遇到了问题或对网站建设有建议，请您将问题或建议以以下三种方式反馈至管理员：
+			</p>
+			<h2 id="线下交流">线下交流</h2>
+			<p>如果有一些对网站提升的建设性意见，您可以以线下交流的方式与网站管理与网站管理员进行沟通。不过不建议您使用这种方式，因为管理员容易忘记您的需求。</p>
+			<h2 id="站内反馈">站内反馈</h2>
+			<p>该功能正在开发，敬请期待。</p>
+			<!-- <h2 class="anchor anchorWithStickyNavbar_CuU3" id="成员架构">成员架构</h2>
+				<ul class="">
+					<li>创始人：kkksc03、lzn（前任站长）、lin_toto（首席技术官）</li>
+					<li>开发组：负责新功能开发与功能维护等</li>
+					<li>学术组：负责教材编写、题库管理、课程编排等</li>
+					<li>运营组：负责活动运营、宣传推广、日常运行等</li>
+				</ul> -->
+			<h2 id="邮箱投递">邮箱投递</h2>
+			<p>
+			推荐您采用邮箱投递的方式给我们反馈意见！<br>
+			班级圈网站配有2个邮箱反馈渠道：<br>
+			渠道1: <a href="mailto:2247286854@qq.com">2247286854@qq.com</a><br>
+			渠道2: <a href="mailto:13021262946@163.com">13021262946@163.com</a><br>
+			您可选择任意一渠道进行反馈！<br>
+			（注：如果您有多个问题，请您尽量积攒至同一时段进行提交，感谢您的理解！）<br>
+			</p>
+		</article>
+	</section>
+
+
+	<!-- Bookstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+	</script>
+	<script src="../../static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
+
+	<script src="../../static/js/checker.js"></script>
+</body>
+
+</html>

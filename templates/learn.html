@@ -1,0 +1,318 @@
+<!-- /activity/learn/ -->
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>班级圈计划 - ClassNet</title>
+
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="../../static/bootstrap-4.6.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../../static/css/std.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .section {
+            width: 95%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .section h2 {
+            margin: 0;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .section p {
+            margin: 0;
+            padding: 10px 20px;
+            flex: 1;
+        }
+
+        .section:nth-child(1) {
+            background-color: #ff5252;
+        }
+
+        .section:nth-child(1) h2 {
+            background-color: #d32f2f;
+        }
+
+        .section:nth-child(2) {
+            background-color: #4fc3f7;
+        }
+
+        .section:nth-child(2) h2 {
+            background-color: #0288d1;
+        }
+
+        .section:nth-child(3) {
+            background-color: #9575cd;
+        }
+
+        .section:nth-child(3) h2 {
+            background-color: #512da8;
+        }
+
+        .section:nth-child(4) {
+            background-color: #ff8a65;
+        }
+
+        .section:nth-child(4) h2 {
+            background-color: #d84315;
+        }
+
+        .section:nth-child(5) {
+            background-color: #4db6ac;
+        }
+
+        .section:nth-child(5) h2 {
+            background-color: #00897b;
+        }
+
+        .section:nth-child(6) {
+            background-color: #ffb74d;
+        }
+
+        .section:nth-child(6) h2 {
+            background-color: #f57c00;
+        }
+
+        .section:nth-child(7) {
+            background-color: #aed581;
+        }
+
+        .section:nth-child(7) h2 {
+            background-color: #7cb342;
+        }
+
+        .section:nth-child(8) {
+            background-color: #7986cb;
+        }
+
+        .section:nth-child(8) h2 {
+            background-color: #303f9f;
+        }
+
+        .section:nth-child(9) {
+            background-color: #f06292;
+        }
+
+        .section:nth-child(9) h2 {
+            background-color: #c2185b;
+        }
+
+        .section:nth-child(10) {
+            background-color: #ba68c8;
+        }
+
+        .section:nth-child(10) h2 {
+            background-color: #8e24aa;
+        }
+
+        #footer-text {
+            flex-grow: 1;
+            text-align: right;
+            white-space: nowrap;
+            margin: 80px;
+            margin-left: 100px;
+        }
+
+        #footer-img {
+            display: flex;
+            align-items: center;
+            margin: 60px;
+        }
+
+        @media (max-width: 768px) {
+
+            /* 手机 */
+            #footer-img {
+                display: none;
+            }
+
+            #footer-text {
+                float: left;
+                text-align: center;
+            }
+
+            .nav_text {
+                font-size: 12px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 顶部信息 -->
+    <header>
+        <a href="/" id="head_logo_text">
+            <div>
+                <img src="../../static/img/logo.png" alt="logo" id = "logo_img" />
+            </div>
+            <div>
+                <div id="logo_text_h">
+                    &nbsp; 人大附通·北京学校 2023级四班 班级圈
+                </div>
+                <div id="logo_text_l">
+                    &nbsp;&nbsp; Grade 2023 Class 4 - Class Net
+                </div>
+            </div>
+        </a>
+        {% if session['login'] %}
+        <div id="header_buttons">
+            <a href="/discuss/new/" target="_blank">
+                <img src="../../static/img/new_ico.png" alt="新建" class = "header_button_img" />
+            </a>
+            <a href="/discuss/list/" target="_blank">
+                <img src="../../static/img/search_ico.png" alt="搜索" class = "header_button_img" />
+            </a>
+            <a href="/user/me/" target="_blank">
+                <img src="../../static/img/person_ico.png" alt="个人" class = "header_button_img" />
+            </a>
+            {% if session['admin'] %}
+            <a href="/setting/" target="_blank">
+                <img src="../../static/img/setting_ico.png" alt="设置" class = "header_button_img" />
+            </a>
+            {% endif %}
+        </div>
+        {% else %}
+        <p id="header_buttons">
+        <h3><a href="/login/">登录</a></h3>
+        </p>
+        {% endif %}
+    </header>
+    <nav id="navbar" class="nav nav-pills nav-justified">
+        <div class="nav-link">
+            <a class="nav_link" href="/information/" target="_blank">
+                <div class="nav_text">班级信息</div>
+            </a>
+        </div>
+        <div class="nav-link">
+            <a class="nav_link" href="/resource/" target="_blank">
+                <div class="nav_text">班级资源</div>
+            </a>
+        </div>
+        <div class="nav-link">
+            <a class="nav_link" href="/forum/" target="_blank">
+                <div class="nav_text">班级论坛</div>
+            </a>
+        </div>
+        <div class="nav-link">
+            <a class="nav_link" href="/activity/" target="_blank">
+                <div class="nav_text">班级活动</div>
+            </a>
+        </div>
+        <div class="nav-link">
+            <a class="nav_link" href="/album/" target="_blank">
+                <div class="nav_text">班级相册</div>
+            </a>
+        </div>
+        <div class="nav-link">
+            <a class="nav_link" href="/about/" target="_blank">
+                <div class="nav_text">帮助中心</div>
+            </a>
+        </div>
+    </nav>
+    <section class="container">
+        <a href="./yuwen/" class="section">
+            <h2>语文</h2>
+            <p>进入语文园地，你将了解更多有趣的文学知识，丰富文化内涵。</p>
+        </a>
+        <a href="./shuxue/" class="section">
+            <h2>数学</h2>
+            <p>进入数学视界，你不仅能复习重点的数学知识，还将了解更多有趣的数学故事，感受数学之美。</p>
+        </a>
+        <a href="./yingyu/" class="section">
+            <h2>英语</h2>
+            <p>In the English Land, you will find a magic world of English. You will improve yourself with the fun activity!</p>
+        </a>
+        <a href="./daodeyufazhi/" class="section">
+            <h2>道德与法治</h2>
+            <p>在道德与法治的学习中，你将学会如何成为一个有责任感和道德的人，理解法律的基本知识。</p>
+        </a>
+        <a href="./dili/" class="section">
+            <h2>地理</h2>
+            <p>探索地理的世界，了解地球的自然环境和人类活动，感受大自然的神奇和美丽。</p>
+        </a>
+        <a href="./lishi/" class="section">
+            <h2>历史</h2>
+            <p>在历史的长河中，了解过去的事件和人物，学习历史带来的智慧和启示。</p>
+        </a>
+        <a href="./shengwu/" class="section">
+            <h2>生物</h2>
+            <p>进入生物世界，探索生命的奥秘，了解各种生物的结构和功能。</p>
+        </a>
+        <a href="./huaxue/" class="section">
+            <h2>化学</h2>
+            <p>化学的奇妙世界将带你认识物质的组成和变化，了解化学反应的原理。</p>
+        </a>
+        <a href="./wuli/" class="section">
+            <h2>物理</h2>
+            <p>学习物理知识，探索物质的基本规律，理解自然界的各种现象。</p>
+        </a>
+        <a href="./yishu/" class="section">
+            <h2>艺术</h2>
+            <p>在艺术的殿堂里，感受艺术的魅力，培养你的创造力和审美能力。</p>
+        </a>
+    </section>
+    <footer>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="footer_data" id="footer-img">
+                <img src="../../static/img/footer.png" style="width: 53%;">
+                <img src="../../static/img/qr_code.png" style="width: 20%; height: auto;">
+            </div>
+            <div class="footer_data" id="footer-text">
+                <span></span>
+                <a href="/about/course/" style="color: white; text-decoration: none;">使用教程</a>|
+                <a href="/about/manage/" style="color: white; text-decoration: none;">管理事项</a>|
+                <a href="/about/ula/" style="color: white; text-decoration: none;">用户协议</a>|
+                <a href="/about/feedback/" style="color: white; text-decoration: none;">联系我们</a>
+                </span>
+                <br>
+            Developed by the Class Net Dev Team
+                <br>
+            2024-2027，© 班级圈
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bookstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="../../static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
+
+    <script src="../../static/js/refresh_color.js"></script>
+    <script src="../../static/js/checker.js"></script>
+</body>
+
+</html>

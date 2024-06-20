@@ -1,0 +1,319 @@
+<!-- 这个不用写 -->
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>班级圈计划 - ClassNet</title>
+
+		<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+		<link rel="stylesheet" href="../static/bootstrap-4.6.2/css/bootstrap.min.css">
+
+		<link rel="stylesheet" href="../static/css/std.css">
+		<style>
+			#resource_search {
+				width: 87%;
+				height: 35px;
+				font-size: 20px;
+			}
+
+			#resource_submit {
+				width: 12%;
+				font-size: 20px;
+				color: white;
+				background-color: darkturquoise;
+				border-radius: 5px;
+				border-color: rgb(255, 255, 255, 0);
+			}
+
+			#resource_submit:hover {
+				background-color: mediumaquamarine;
+			}
+
+			#resource_submit:active {
+				background-color: rgb(173, 192, 232);
+				color: white;
+				border-color: rgb(0, 0, 0);
+			}
+
+			.resource-search {
+				display: flex;
+				justify-content: space-between;
+				padding: 10px;
+				background-color: #fff;
+				margin: 20px;
+				border-radius: 10px;
+			}
+
+			.resource-content {
+				background-color: rgb(255, 255, 255, 0.6);
+				margin: 20px;
+				padding: 20px;
+				border-radius: 10px;
+			}
+
+			.resource-options span {
+				margin-right: 10px;
+			}
+
+			.post-content p,
+			.post-example p {
+				margin-bottom: 10px;
+			}
+
+			#check_box {
+				display: flex;
+			}
+
+			#sort_way {
+				display: flex;
+			}
+
+			#check_box span {
+				font-size: 20px;
+			}
+
+			#sort_way {
+				margin-top: 8px;
+				font-size: 20px;
+			}
+
+			.resource h1 {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+
+			#info {
+				display: flex;
+			}
+
+			#info p {
+				margin-right: 30px;
+			}
+
+			.resource {
+				background-color: rgb(255, 255, 255, 0.6);
+				margin: 20px;
+				padding: 20px;
+				border-radius: 10px;
+				margin-bottom: 10px;
+			}
+
+			@media (max-width: 768px) {
+				#check_box span {
+					font-size: 16px;
+				}
+				#sort_way b {
+					font-size: 23px;
+				}
+				.sw {
+					font-size: 23px;
+				}
+				.way {
+					font-size: 16px;
+				}
+				/* 手机 */
+				.nav_text {
+					position: relative;
+					left: 0px;
+					display: flex;
+					font-size: 12px;
+				}
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<!-- 顶部信息 -->
+		<header>
+		<a href="/" id = "head_logo_text">
+				<div>
+					<img src="../static/img/logo.png" alt="logo" id = "logo_img" />
+				</div>
+				<div>
+					<div id = "logo_text_h">
+						&nbsp; 人大附通·北京学校 2023级四班 班级圈
+					</div>
+					<div id = "logo_text_l">
+						&nbsp;&nbsp; Grade 2023 Class 4 - Class Net
+					</div>
+				</div>
+			</a>
+			{% if session['login'] %}
+			<div id = "header_buttons">
+				<a href="/discuss/new/" target="_blank">
+					<img src="../static/img/new_ico.png" alt="新建" class = "header_button_img" />
+				</a>
+				<a href="/discuss/list/" target="_blank">
+					<img src="../static/img/search_ico.png" alt="搜索" class = "header_button_img" />
+				</a>
+				<a href="/user/me/" target="_blank">
+					<img src="../static/img/person_ico.png" alt="个人" class = "header_button_img" />
+				</a>
+				{% if session['admin'] %}
+				<a href="/setting/" target="_blank">
+					<img src="../static/img/setting_ico.png" alt="设置" class = "header_button_img" />
+				</a>
+				{% endif %}
+			</div>
+			{% else %}
+			<p id = "header_buttons"><h3><a href = "/login/">登录</a></h3></p>
+			{% endif %}
+		</header>
+		<nav id = "navbar" class = "nav nav-pills nav-justified">
+			<div class = "nav-link">
+				<a class = "nav_link" href="/information/" target="_blank">
+					<div class = "nav_text">班级信息</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/resource/" target="_blank">
+					<div class = "nav_text">班级资源</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/forum/" target="_blank">
+					<div class = "nav_text">班级论坛</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/activity/" target="_blank">
+					<div class = "nav_text">班级活动</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/album/" target="_blank">
+					<div class = "nav_text">班级相册</div>
+				</a>
+			</div>
+			<div class = "nav-link">
+				<a class = "nav_link" href="/about/" target="_blank">
+					<div class = "nav_text">帮助中心</div>
+				</a>
+			</div>
+		</nav>
+		<section>
+			<main>
+				<section class="resource-search">
+					<input type="text" placeholder="搜索资源......" id="resource_search">
+					<button id="resource_submit">搜&nbsp;索</button>
+				</section>
+
+				<section class="resource-content">
+					<div class="resource-options">
+						<form id="check_box">
+							<div><input type="checkbox" name="cb"/><span>班级信息</span></div>
+							<div><input type="checkbox" name="cb"/><span>班级资源</span></div>
+							<div><input type="checkbox" name="cb"/><span>班级论坛</span></div>
+							<div><input type="checkbox" name="cb"/><span>班级活动</span></div>
+							<div><input type="checkbox" name="cb"/><span>班级相册</span></div>
+						</form>
+						<form id="sort_way">
+							<div><span><b><p>排序方式<p/></b></span></div>
+							<input type="radio" name="sw"><span class="sw">发布时间<span class="way">（从晚到先）</span></span>
+							<input type="radio" name="sw"><span class="sw">浏览数量<span class="way">（从大到小）</span></span>
+							<input type="radio" name="sw"><span class="sw">点赞数量<span class="way">（从多到少）</span></span>
+						</form>
+					</div>
+				</section>
+				<section class="resource-list">
+
+					<div class="resource">
+						<h1>标题标题标题TitleTitleTitle</h1>
+						<div id="info">
+							<p>发布者：昵称 姓名</p>
+							<p>发布时间：2023.1.2 18:13:18</p>
+							<p>标签：xxx</p>
+							<p>类型：文件/文章/短评</p>
+							<p>点赞：15</p>
+							<p>收藏：5</p>
+						</div>
+						<p>摘要/介绍</p>
+					</div>
+					<div class="resource">
+						<h1>标题标题标题TitleTitleTitle</h1>
+						<div id="info">
+							<p>发布者：昵称 姓名</p>
+							<p>发布时间：2023.1.2 18:13:18</p>
+							<p>标签：xxx</p>
+							<p>类型：文件/文章/短评</p>
+							<p>点赞：15</p>
+							<p>收藏：5</p>
+						</div>
+						<p>摘要/介绍</p>
+					</div>
+					<div class="resource">
+						<h1>标题标题标题TitleTitleTitle</h1>
+						<div id="info">
+							<p>发布者：昵称 姓名</p>
+							<p>发布时间：2023.1.2 18:13:18</p>
+							<p>标签：xxx</p>
+							<p>类型：文件/文章/短评</p>
+							<p>点赞：15</p>
+							<p>收藏：5</p>
+						</div>
+						<p>摘要/介绍</p>
+					</div>
+					<div class="resource">
+						<h1>标题标题标题TitleTitleTitle</h1>
+						<div id="info">
+							<p>发布者：昵称 姓名</p>
+							<p>发布时间：2023.1.2 18:13:18</p>
+							<p>标签：xxx</p>
+							<p>类型：文件/文章/短评</p>
+							<p>点赞：15</p>
+							<p>收藏：5</p>
+						</div>
+						<p>摘要/介绍</p>
+					</div>
+					<div class="resource">
+						<h1>标题标题标题TitleTitleTitle</h1>
+						<div id="info">
+							<p>发布者：昵称 姓名</p>
+							<p>发布时间：2023.1.2 18:13:18</p>
+							<p>标签：xxx</p>
+							<p>类型：文件/文章/短评</p>
+							<p>点赞：15</p>
+							<p>收藏：5</p>
+						</div>
+						<p>摘要/介绍</p>
+					</div>
+				</section>
+			</main>
+
+
+		</section>
+		<footer>
+			<div>
+				<p class="footer_data"><b>制作团队：</b>4班班级圈网站开发组</p>
+				<p class="footer_data"><b>网站主要设计者：</b>贠涵，闫嘉桐，王岩杉，袁立之，董雨宸，尹怀杰</p>
+				<p class="footer_data"><b>技术开发者：</b>袁立之，董雨宸，尹怀杰</p>
+				<p class="footer_data"><b>内容责任编辑：</b>贠涵，闫嘉桐</p>
+				<p class="footer_data"><b>运维人员（目前）：</b>尹怀杰</p>
+				<p class="footer_data">
+					<b>欢迎各位提出改正意见，联系方式：</b><br>邮箱1（尹怀杰）：2247286854@qq.com<br>邮箱2（董雨宸）：dyc05291025@163.com
+				</p>
+				<p class="footer_data"><b>在此感谢为网站诞生而努力的所有人</b></p>
+				<p class="footer_data"><b>©人大附通·北京学校 初一4班 班级网站</b></p>
+				<p class="footer_data"><a href="#">查看更多</a></p>
+			</div>
+		</footer>
+
+
+
+		<!-- Bookstrap -->
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+			integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+		</script>
+		<script src="../static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
+
+		<script src="../static/js/refresh_color.js"></script>
+		<script src="../static/js/refresh_word.js"></script>
+		<script src="../static/js/checker.js"></script>
+	</body>
+</html>

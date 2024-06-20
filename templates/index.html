@@ -1,0 +1,291 @@
+<!-- / -->
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>班级圈计划 - ClassNet</title>
+
+	<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="../static/bootstrap-4.6.2/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="../static/bootstrap-4.6.2/css/bootstrap.css">
+	<link rel="stylesheet" href="../static/css/std.css">
+	<style>
+		#footer-text {
+			flex-grow: 1;
+			text-align: right;
+			white-space: nowrap;
+			margin: 80px;
+			margin-left: 100px;
+		}
+
+		#footer-img {
+			display: flex;
+			align-items: center;
+			margin: 60px;
+		}
+
+		@media (max-width: 768px) {
+			/* 手机 */
+			#footer-img {
+				display: none;
+			}
+
+			#footer-text {
+				float: left;
+				text-align: center;
+			}
+
+			.nav_text {
+				font-size: 12px;
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<!-- 顶部信息 -->
+	<header>
+		<a href="/" id="head_logo_text">
+			<div>
+				<img src="../static/img/logo.png" alt="logo" id = "logo_img" />
+			</div>
+			<div>
+				<div id="logo_text_h">
+					&nbsp; 人大附通·北京学校 2023级四班 班级圈
+				</div>
+				<div id="logo_text_l">
+					&nbsp;&nbsp; Grade 2023 Class 4 - Class Net
+				</div>
+			</div>
+		</a>
+		{% if session['login'] %}
+		<div id="header_buttons">
+			<a href="/discuss/new/" target="_blank">
+				<img src="../static/img/new_ico.png" alt="新建" class = "header_button_img" />
+			</a>
+			<a href="/discuss/list/" target="_blank">
+				<img src="../static/img/search_ico.png" alt="搜索" class = "header_button_img" />
+			</a>
+			<a href="/user/me/" target="_blank">
+				<img src="../static/img/person_ico.png" alt="个人" class = "header_button_img" />
+			</a>
+			{% if session['admin'] %}
+			<a href="/setting/" target="_blank">
+				<img src="../static/img/setting_ico.png" alt="设置" class = "header_button_img" />
+			</a>
+			{% endif %}
+		</div>
+		{% else %}
+		<p id="header_buttons">
+		<h3><a href="/login/">登录</a></h3>
+		</p>
+		{% endif %}
+	</header>
+	<nav id="navbar" class="nav nav-pills nav-justified">
+		<div class="nav-link">
+			<a class="nav_link" href="/information/" target="_blank">
+				<img class = "nav_img" src = "../static/img/information.png" />
+				<div class="nav_text">班级信息</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="/resource/" target="_blank">
+				<img class = "nav_img" src = "../static/img/resource.png" />
+				<div class="nav_text">班级资源</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="/forum/" target="_blank">
+				<img class = "nav_img" src = "../static/img/forum.png" />
+				<div class="nav_text">班级论坛</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="/activity/" target="_blank">
+				<img class = "nav_img" src = "../static/img/activity.png" />
+				<div class="nav_text">班级活动</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="/album/" target="_blank">
+				<img class = "nav_img" src = "../static/img/album.png" />
+				<div class="nav_text">班级相册</div>
+			</a>
+		</div>
+		<div class="nav-link">
+			<a class="nav_link" href="/about/" target="_blank">
+				<img class = "nav_img" src = "../static/img/develop.png" />
+				<div class="nav_text">帮助中心</div>
+			</a>
+		</div>
+	</nav>
+	<section>
+		<div class="row rdiv pack">
+			<div id="carousel" class="carousel slide col-12 col-lg-8" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel" data-slide-to="1"></li>
+					<li data-target="#carousel" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="../static/img/main_img_1.png" alt="样例图片1" class="d-block w-100 rollpics">
+						<div class="carousel-caption d-none d-md-block">
+							<h1>4班班级圈恭祝您新春快乐</h5>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="../static/img/main_img_2.png" alt="样例图片2" class="d-block w-100 rollpics">
+						<div class="carousel-caption d-none d-md-block">
+							<h1>Second slide label</h5>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="../static/img/捕获.png" alt="样例图片3" class="d-block w-100 rollpics">
+						<div class="carousel-caption d-none d-md-block">
+							<h1>Third slide label</h5>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-target="#carousel" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-target="#carousel" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</button>
+			</div>
+			<div class="col-12 col-lg-4">
+				<div id="c_explain">
+					<p id="cex_word">
+						春节，是中国民间最隆重最富有特色的传统节日之一。
+						{{ cex_words }}
+					</p>
+					<a id="cex_link" href="">(点击查看详情)</a>
+					<span id = "dsto" data-cex-first = "{{ cex_words_1 }}" data-cex-second = "{{ cex_words_2 }}" data-cex-third = "{{ cex_words_3 }}"></span>
+					<span id = "dlsto" data-cex-l-first = "{{ cex_link_1 }}" data-cex-l-second = "{{ cex_link_2 }}" data-cex-l-third = "{{ cex_link_3 }}"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row pack">
+			<div class="col rdiv">
+				<h3 class="ctitle">今日作业</h3>
+				<a href="./discuss/{{ hwid }}">
+					<img src = "../static/discuss_img/{{ hwpid }}.png" alt="作业详情" id="homework_img" />
+				</a>
+			</div>
+			<div class="col-auto"></div>
+			<div class="col rdiv">
+				<h3 class="ctitle">光荣榜</h3>
+				{% for gr in grs %}
+				<p><span class="event" style="color: red;">{{ gr[0] }}：</span><span class="name"> {{ gr[1] }} </span>
+				</p>
+				{% endfor %}
+			</div>
+		</div>
+		<!--
+		<div class = "row pack">
+			<div class = "col rdiv">
+				<h3 class = "ctitle">历史记录</h3>
+				
+			</div>
+			<div class = "col-auto"></div>
+			<div class = "col rdiv">
+				<h3 class = "ctitle">猜你喜欢</h3>
+				
+			</div>
+		</div>
+		-->
+		<div class="row pack">
+			<div class="col rdiv">
+				<h3 class="ctitle">最新讨论 热门讨论</h3>
+				{% for d in dis %}
+				<div class="resource rdiv pack">
+					<a href="../discuss/{{ d.id }}/" target="_blank">
+						<h1>{{ d.title }}</h1>
+					</a>
+					<div id="info">
+						<p>发布者：
+						<div id="pub_infos">
+							<a class="infolink" href="../../user/{{ d.pub_id }}" target="_blank">
+								<img src = "../../static/user_pic/{{ d.pub_pic }}" style = "height: 15px; width: 15px;" />
+			{{ d.pub_name }}
+								<!-- 奖章绶带badge[未来] -->
+							</a>
+						</div>
+						</p>
+						<p>发布时间：{{ d.pub_time }}</p>
+						<p>主题：{{ d.subjects }}</p>
+						<p>类型：{{ d.type_sh }}</p>
+					</div>
+					<p>{{ d.main_data }}</p>
+				</div>
+
+				{% endfor %}
+			</div>
+			<div class="col-auto"></div>
+			<div class="col rdiv">
+				<h3 class="ctitle">最新资源 热门资源</h3>
+				<h1>暂无支持！</h1>
+			</div>
+		</div>
+
+		<div class="row pack">
+			<div class="col rdiv">
+				<h3 class="ctitle">最近活动</h3>
+				<h1>暂无支持！</h1>
+			</div>
+			<div class="col-auto"></div>
+			<div class="col rdiv">
+				<h3 class="ctitle">更新相册</h3>
+				<h1>暂无支持！</h1>
+			</div>
+		</div>
+
+	</section>
+	<footer>
+		<div style="display: flex; justify-content: space-between; align-items: center;">
+			<div class="footer_data" id="footer-img">
+				<img src="../static/img/footer.png" style="width: 53%;">
+				<img src="../static/img/qr_code.png" style="width: 20%; height: auto;">
+			</div>
+			<div class="footer_data" id="footer-text">
+				<span>
+                <a href="/about/course/" style="color: white; text-decoration: none;">使用教程</a>|
+                <a href="/about/manage/" style="color: white; text-decoration: none;">管理事项</a>|
+                <a href="/about/ula/" style="color: white; text-decoration: none;">用户协议</a>|
+                <a href="/about/feedback/" style="color: white; text-decoration: none;">联系我们</a>
+            </span>
+				<br>
+            Developed by the Class Net Dev Team
+				<br>
+            2024-2027，© 班级圈
+			</div>
+		</div>
+	</footer>
+
+
+
+
+	<!-- Bookstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+	</script>
+	<script src="../static/bootstrap-4.6.2/js/bootstrap.min.js"></script>
+
+	<script src="../static/js/refresh_color.js"></script>
+	<script src="../static/js/refresh_word.js"></script>
+	<script src="../static/js/checker.js"></script>
+</body>
+
+</html>

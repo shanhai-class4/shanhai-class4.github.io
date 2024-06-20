@@ -1,0 +1,299 @@
+/* 字体定义 */
+@font-face
+{
+    font-family: 'hw_new';
+    src: url('HW_NEW.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face
+{
+    font-family: 'pingfang0';
+    src: url('pingfang0_0.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 默认链接格式 */
+a:link
+{
+	color: #000000;
+	text-decoration: underline;
+}
+a:visited
+{
+	color: #000000;
+	text-decoration: underline;
+}
+a:hover
+{
+	color: #009FFF;
+	text-decoration: underline;
+	font-weight: bold;
+}
+a:active
+{
+	color: #FF1F7F;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+/* 背景 */
+body
+{
+	font-family: 'pingfang0', sans-serif;
+	/*background-image: linear-gradient(99deg, #7DDFD7, #ADC0E8);*/
+	/*
+	rgb(125, 223, 215)
+	rgb(173, 192, 232)
+	rgb(34, 140, 131)
+	rgb(44, 81, 158)
+	7DDFD7 -> ADC0E8
+	228C83 -> 2C519E
+	*/
+}
+
+/* 头部设计 */
+header
+{
+	background: rgba(255, 255, 255, 0.15);
+	padding: 10px;
+	color: #FFFFFF;
+	text-align: center;
+	display: flex;
+}
+#head_logo_text
+{
+	display: flex;
+	color: white;
+	text-decoration: none;
+}
+#head_logo_text:link { display: flex; color: white; text-decoration: none; font-weight: normal;}
+#head_logo_text:visited { display: flex; color: white; text-decoration: none; font-weight: normal;}
+#head_logo_text:hover { display: flex; color: white; text-decoration: none; font-weight: normal;}
+#head_logo_text:active { display: flex; color: white; text-decoration: none; font-weight: normal;}
+#logo_img
+{
+	width: 70px;
+	height: 70px;
+}
+#logo_text_h
+{
+	font-size: 30px;
+}
+#logo_text_l
+{
+	font-size: 20px;
+	text-align: left;
+}
+
+#header_buttons
+{
+	margin-left: auto;
+	margin-right: 0px;
+	padding-right: 30px;
+}
+.header_button_img
+{
+	width: 70px;
+	height: 70px;
+	margin-right: 20px;
+}
+.main-content {
+				margin: 10px;
+				padding: 10px;
+				/* border: darkgray 1px solid; */
+				border-radius: 10px;
+				background-color: rgb(255, 255, 255, 0.5);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+#navbar
+{
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+#nav_active
+{
+	background-color: rgba(255, 255, 255, 0.7);
+}
+.nav_img
+{
+	width: 70px;
+	height: 70px;
+}
+.nav_text
+{
+	color: black;
+	font-size: 20px;
+}
+.nav_link
+{
+	color: black;
+	text-decoration: none;
+	font-weight: normal;
+}
+.nav_link:link { color: black; text-decoration: none; font-weight: normal;}
+.nav_link:visited { color: black; text-decoration: none; font-weight: normal;}
+.nav_link:hover { color: black; text-decoration: none; font-weight: normal;}
+.nav_link:active { color: black; text-decoration: none; font-weight: normal;}
+
+/* 中部设计 */
+.rdiv
+{
+	border-radius: 20px;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+.rollpics
+{
+	border-radius: 8px;
+	margin: 10px;
+	margin-right: 0px;
+	padding-right: 0px;
+	aspect-ratio: 16 / 9;
+}
+
+#c_explain
+{
+	border-radius: 8px;
+	margin: 10px;
+	margin-left: 0px;
+	padding-left: 0px;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+#dsto
+{
+	display: none;
+}
+
+.pack
+{
+	margin: 20px;
+}
+
+#homework_img
+{
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 12px;
+	height: 500px;
+}
+
+.ctitle
+{
+	text-align: center;
+}
+
+/* 尾部设计 */
+footer {
+	margin-top: 20px;
+	background-color: rgb(100, 150, 255, 0.3);
+	color: white;
+	text-align: center;
+	padding: 10px;
+	height: auto;
+}
+.footer_data
+{
+	color: white;
+	text-align: center;
+	text-decoration: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 1280px) /* 平板电脑 */
+{
+	#logo_text_h
+	{
+		font-size: 20px;
+	}
+	#logo_text_l
+	{
+		font-size: 10px;
+	}
+	#header_buttons
+	{
+		padding-right: 15px;
+	}
+	.header_button_img
+	{
+		margin-right: 10px;
+	}
+	
+	.nav_img
+	{
+		width: 45%;
+		height: auto;
+	}
+	
+}
+
+@media (max-width: 768px) /* 手机 */
+{
+	#logo_text_h
+	{
+		display: none;
+	}
+	#logo_text_l
+	{
+		display: none;
+	}
+	#header_buttons
+	{
+		padding-right: 5px;
+	}
+	.header_button_img
+	{
+		margin-right: 5px;
+	}
+	
+	.nav_img
+	{
+		width: 50%;
+		height: auto;
+	}
+	.nav_text
+	{
+		font-size: 15px;
+	}
+}
+/*
+	.header_buttons {
+		padding-left: 70px;
+		padding-right: 10px;
+	}
+
+	.main-content p {
+		font-size: 25px;
+	}
+
+	.nav_text {
+		font-size: 15px;
+	}
+
+	.first {
+		margin-left: 5px;
+		display: flow-root;
+	}
+
+	.second {
+		margin-left: 5px;
+		display: flow-root;
+	}
+
+	.third {
+		margin-left: 5px;
+		display: flow-root;
+	}
+
+	.forth {
+		margin-left: 5px;
+		display: flow-root;
+	}
+
+	.fifth {
+		margin-left: 5px;
+		display: flow-root;
+	}
+}*/
