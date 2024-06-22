@@ -1,0 +1,28 @@
+site_name: 班级圈网站使用教程
+nav:
+    - 首页: index.md
+    - 用户登录与注册: login.md
+    - 参与讨论: discussion.md
+theme:
+  name: "material"
+  features:
+    - navigation.tabs
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+plugins:
+  - search:
+      lang: en
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
